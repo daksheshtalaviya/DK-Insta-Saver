@@ -14,7 +14,8 @@ extension HomeController {
 
         let alertController = UIAlertController(title: "Download Media", message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Download", style: .destructive, handler: { action in
-            self.startDownloadMedia()
+//            self.startDownloadMedia()
+            self.startDownloadStory()
         }))
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         
@@ -23,11 +24,9 @@ extension HomeController {
         }
     }
     
+    //MARK: - Media
     func startDownloadMedia() {
-//        downloadImage()
-//        downloadAllTypesOfMedia()
-//        getPageSource(completion: nil)
-        
+
         getShortCodeOfPost { [weak self] shortCode in
             guard let self = self else { return }
             guard let shortCode = shortCode, !shortCode.isEmpty else { return }
@@ -35,19 +34,41 @@ extension HomeController {
         }
     }
     
-//    func downloadAllTypesOfMedia() {
-//
-//        guard !AppConfig.appId.isEmpty else {
-//            getAppId { _ in
-//                self.downloadAllTypesOfMedia()
-//            }
-//            return
-//        }
-//
-//        getMediaId { mediaId in
-//            self.getMediaInfoAPI(mediaId: mediaId)
-//        }
-//    }
+    //MARK: - Story
+    func startDownloadStory() {
+        DSLog.log()
+        
+        guard !AppConfig.appId.isEmpty else {
+            getAppId { _ in
+                self.startDownloadStory()
+            }
+            return
+        }
+        
+        guard !AppConfig.cookies.isEmpty else {
+            getCookies { _ in
+                self.startDownloadStory()
+            }
+            return
+        }
+        
+        Task {
+            do {
+                let user = try await APIManager.getUserId(userName: "disha_patel_5___")
+                guard let userId = user.id else { return }
+                DSLog.log("userId: \(userId)")
+
+                let stories = try await APIManager.getStories(userId: userId)
+                guard !stories.isEmpty else {
+                    ProgressHUDManager.showProgress(message: "Story not found")
+                    return }
+                DSLog.log("stories: \(stories.compactMap({$0.items?.getUrls}))")
+
+            } catch {
+                DSLog.log("error: \(error.localizedDescription)")
+            }
+        }
+    }
     
     func getCurrentURL(completion: ((String?)->())? = nil) {
         let script = "window.location.href"
@@ -68,19 +89,19 @@ extension HomeController {
         }
     }
     
-//    func getAppId(completion: ((String)->())? = nil) {
-//
-//        let script = """
-// Array.from(document.scripts).filter(script => script.textContent.includes("X-IG-App-ID"))[0].textContent
-// """
-//        DSLog.log("\(#function) script: \(script)")
-//        runScript(script: script) { (value: String) in
-//            let appId = value.slice(from: "X-IG-App-ID\":\"", to: "\"") ?? ""
-//            DSLog.log("\(#function) appId: \(appId)")
-//            AppConfig.appId = appId
-//            completion?(appId)
-//        }
-//    }
+    func getAppId(completion: ((String)->())? = nil) {
+
+        let script = """
+ Array.from(document.scripts).filter(script => script.textContent.includes("X-IG-App-ID"))[0].textContent
+ """
+        DSLog.log("\(#function) script: \(script)")
+        runScript(script: script) { (value: String) in
+            let appId = value.slice(from: "X-IG-App-ID\":\"", to: "\"") ?? ""
+            DSLog.log("\(#function) appId: \(appId)")
+            AppConfig.appId = appId
+            completion?(appId)
+        }
+    }
     
 //    func getPageSource(completion: ((String)->())? = nil) {
 //        DSLog.log()
@@ -142,7 +163,7 @@ extension HomeController {
             }
             DSLog.log("headers: \(headers)")
             
-            AppConfig.cookies = headers.joined(separator: ";")
+            AppConfig.cookies = "sessionid=\(cookies.first(where: {$0.name == "sessionid"})?.value ?? "")"
             
             completion?(headers)
         }
@@ -204,13 +225,13 @@ extension HomeController {
             return
         }
         
-        getPostDetailAPI(shortCode: shortCode)
+        APIManager.getMediaDetailAPI(shortCode: shortCode)
             .sink { item in
                 self.downloadMedia(post: item)
             }.store(in: &cancellableList)
     }
     
-    func downloadMedia(post: Post) {
+    func downloadMedia(post: Media) {
         let candidate = post.image_versions2?.originalCandidate
         DSLog.log("\(#function) mediaIds: \(post.pk ?? 0), candidate: \(candidate?.toJSONString(prettyPrint: true) ?? "")")
         
@@ -218,12 +239,12 @@ extension HomeController {
     }
 }
 
-//extension String {
-//
-//    func slice(from: String, to: String) -> String? {
-//        guard let rangeFrom = range(of: from)?.upperBound else { return nil }
-//        guard let rangeTo = self[rangeFrom...].range(of: to)?.lowerBound else { return nil }
-//        return String(self[rangeFrom..<rangeTo])
-//    }
-//
-//}
+extension String {
+
+    func slice(from: String, to: String) -> String? {
+        guard let rangeFrom = range(of: from)?.upperBound else { return nil }
+        guard let rangeTo = self[rangeFrom...].range(of: to)?.lowerBound else { return nil }
+        return String(self[rangeFrom..<rangeTo])
+    }
+
+}

@@ -14,10 +14,12 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct Candidates : Mappable {
+struct VideoVersions : Mappable {
+	var type : Int?
 	var width : Int?
 	var height : Int?
 	var url : String?
+	var id : String?
 
 	init?(map: Map) {
 
@@ -25,9 +27,11 @@ struct Candidates : Mappable {
 
 	mutating func mapping(map: Map) {
 
+		type <- map["type"]
 		width <- map["width"]
 		height <- map["height"]
 		url <- map["url"]
+		id <- map["id"]
 	}
 
 }

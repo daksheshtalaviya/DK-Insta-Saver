@@ -14,11 +14,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct Music_metadata : Mappable {
-	var music_canonical_id : String?
-	var audio_type : String?
-	var music_info : String?
-	var original_sound_info : String?
+struct Candidates : Mappable {
+	var width : Int?
+	var height : Int?
+	var url : String?
 
 	init?(map: Map) {
 
@@ -26,10 +25,9 @@ struct Music_metadata : Mappable {
 
 	mutating func mapping(map: Map) {
 
-		music_canonical_id <- map["music_canonical_id"]
-		audio_type <- map["audio_type"]
-		music_info <- map["music_info"]
-		original_sound_info <- map["original_sound_info"]
+		width <- map["width"]
+		height <- map["height"]
+		url <- map["url"]
 	}
 
 }

@@ -10,6 +10,6 @@ import Foundation
 class AppConfig {
     
     static var cookies: String = ""
-    static var appId: String = ""
+    static var appId: String = "936619743392459"
     
 }
