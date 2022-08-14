@@ -17,6 +17,10 @@ class BaseViewController: UIViewController {
         DSLog.log(fileName: self.className)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func goBack(from controller: UIViewController) {
         DSLog.log(fileName: self.className)
         

@@ -9,9 +9,7 @@ import UIKit
 import WebKit
 import Combine
 
-
-
-class HomeController: UIViewController {
+class HomeController: BaseViewController {
     
     @IBOutlet var webView: WKWebView!
     @IBOutlet var btnCount: UIButton!
@@ -27,6 +25,8 @@ class HomeController: UIViewController {
     }
     
     private func initialize() {
+        
+        lblTitle?.text = tabBarItem.title
         
         configure()
         configureButtons()

@@ -10,13 +10,11 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         URLProtocol.registerClass(DKURLProtocol.self)
         DSLog.mode = .release
+        AppManager.shared.configure()
         
         return true
     }

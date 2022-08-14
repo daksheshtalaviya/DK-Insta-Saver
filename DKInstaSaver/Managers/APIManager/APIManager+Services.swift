@@ -12,6 +12,18 @@ import Combine
 
 extension APIManager {
     
+    static func getMediaDetailAPI(strUrl: String) -> Future<Media, Never> {
+        DSLog.log("\(#function) strUrl: \(strUrl)")
+        
+        return Future { promise in
+            guard let url: URL = strUrl.url else { return }
+            var request: URLRequest = URLRequest(url: url)
+            request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
+
+            getMediaDetailAPIRequest(request: request, promise: promise)
+        }
+    }
+    
     static func getMediaDetailAPI(shortCode: String) -> Future<Media, Never> {
         DSLog.log("\(#function) shortCode: \(shortCode)")
         
@@ -19,16 +31,8 @@ extension APIManager {
             guard let url: URL = "https://www.instagram.com/p/\(shortCode)/?__a=1&__d=dis".url else { return }
             var request: URLRequest = URLRequest(url: url)
             request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
-
-            requestList(request: request, keyPath: "items")
-                .sink(receiveCompletion: { _ in
-                }, receiveValue: { (items : [Media]) in
-                    DSLog.log("items: \(items.count)")
-
-                    if let item = items.first {
-                        promise(.success(item))
-                    }
-                }).store(in: &cancellable)
+            
+            getMediaDetailAPIRequest(request: request, promise: promise)
         }
     }
     
@@ -41,16 +45,22 @@ extension APIManager {
             request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
             request.addValue(AppConfig.appId, forHTTPHeaderField: "X-IG-App-ID")
             
-            requestList(request: request, keyPath: "items")
-                .sink(receiveCompletion: { _ in
-                }, receiveValue: { (items : [Media]) in
-                    DSLog.log("items: \(items.count)")
-                    
-                    if let item = items.first {
-                        promise(.success(item))
-                    }
-                }).store(in: &cancellable)
+            getMediaDetailAPIRequest(request: request, promise: promise)
         }
+    }
+    
+    static func getMediaDetailAPIRequest(request: URLRequest, promise: ((Result<Media, Never>) -> Void)? = nil) {
+        DSLog.log("\(#function) request: \(request)")
+        
+        requestList(request: request, keyPath: "items")
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { (items : [Media]) in
+                DSLog.log("items: \(items.count)")
+
+                if let item = items.first {
+                    promise?(.success(item))
+                }
+            }).store(in: &cancellable)
     }
     
     static func getUserId(userName: String) async throws -> User {

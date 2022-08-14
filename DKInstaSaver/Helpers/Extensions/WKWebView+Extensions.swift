@@ -26,4 +26,17 @@ extension WKWebView {
         }
         
     }
+    
+    func getCookies(completion: ((Any?) -> Void)? = nil) {
+        DSLog.log("\(#function)")
+
+        self.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
+            let headers = cookies.compactMap { "\($0.name)=\($0.value)"}
+            DSLog.log("headers: \(headers)")
+            
+            AppConfig.cookies = "sessionid=\(cookies.first(where: {$0.name == "sessionid"})?.value ?? "")"
+            
+            completion?(headers)
+        }
+    }
 }

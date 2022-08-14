@@ -14,8 +14,8 @@ extension HomeController {
 
         let alertController = UIAlertController(title: "Download Media", message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Download", style: .destructive, handler: { action in
-//            self.startDownloadMedia()
-            self.startDownloadStory()
+            self.startDownloadMedia()
+//            self.startDownloadStory()
         }))
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         
@@ -46,7 +46,7 @@ extension HomeController {
         }
         
         guard !AppConfig.cookies.isEmpty else {
-            getCookies { _ in
+            self.webView.getCookies { _ in
                 self.startDownloadStory()
             }
             return
@@ -54,7 +54,7 @@ extension HomeController {
         
         Task {
             do {
-                let user = try await APIManager.getUserId(userName: "disha_patel_5___")
+                let user = try await APIManager.getUserId(userName: "programmer.pro.dev")
                 guard let userId = user.id else { return }
                 DSLog.log("userId: \(userId)")
 
@@ -128,47 +128,6 @@ extension HomeController {
 //        }
 //    }
     
-    func downloadMedia(url: String?) {
-        DSLog.log("\(#function) url: \(url ?? "")")
-
-        guard let url = url?.url else {
-            DSLog.log("\(#function) url not valid.")
-            ProgressHUDManager.showProgress(message: "\(url ?? "N/A") url is not valid")
-            return }
-        URLSession.shared.downloadTask(with: url) { urlFilePath, urlResponse, error in
-            DSLog.log("\(#function) urlResponse: \(urlResponse.debugDescription)")
-            if let error = error {
-                DSLog.log("\(#function) error: \(error.localizedDescription)")
-                ProgressHUDManager.showProgress(message: "Download media error: \(error.localizedDescription)")
-            } else if let tempPath = urlFilePath {
-                DSLog.log("\(#function) tempPath: \(tempPath.path)")
-                StorageManager.shared.saveFile(fromPath: tempPath, fileName: url.lastPathComponent)
-            } else {
-                DSLog.log("\(#function) something went wrong!!")
-                ProgressHUDManager.showProgress(message: nil)
-            }
-        }.resume()
-    }
-}
-
-extension HomeController {
-    
-    func getCookies(completion: ((Any?)->())? = nil) {
-        DSLog.log("\(#function)")
-
-        webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
-            
-            let headers = cookies.compactMap { cookie in
-                return "\(cookie.name)=\(cookie.value)"
-            }
-            DSLog.log("headers: \(headers)")
-            
-            AppConfig.cookies = "sessionid=\(cookies.first(where: {$0.name == "sessionid"})?.value ?? "")"
-            
-            completion?(headers)
-        }
-    }
-    
 }
 
 extension HomeController {
@@ -219,7 +178,7 @@ extension HomeController {
         DSLog.log("\(#function) shortCode: \(shortCode)")
 
         guard !AppConfig.cookies.isEmpty else {
-            getCookies { _ in
+            self.webView.getCookies { _ in
                 self.getPostDetail(shortCode: shortCode)
             }
             return
@@ -235,7 +194,7 @@ extension HomeController {
         let candidate = post.image_versions2?.originalCandidate
         DSLog.log("\(#function) mediaIds: \(post.pk ?? 0), candidate: \(candidate?.toJSONString(prettyPrint: true) ?? "")")
         
-        downloadMedia(url: candidate?.url)
+        DownloadManager.shared.downloadFile(url: candidate?.url)
     }
 }
 
