@@ -18,7 +18,7 @@ enum APIError: Error {
 class APIManager {
     static var cancellable: Set<AnyCancellable> = []
     
-    static func requestObject<T: BaseMappable>(request: URLRequest, keyPath: String? = nil) -> Future<T, Error> {
+    static func requestObject<T: Model>(request: URLRequest, keyPath: String? = nil) -> Future<T, Error> {
         Future { promise in
             AF.request(request)
                 .responseObject(keyPath: keyPath,
@@ -35,7 +35,7 @@ class APIManager {
         }
     }
     
-    static func requestList<T: BaseMappable>(request: URLRequest, keyPath: String? = nil) -> Future<[T], Error> {
+    static func requestList<T: Model>(request: URLRequest, keyPath: String? = nil) -> Future<[T], Error> {
         Future { promise in
             AF.request(request)
                 .responseArray(keyPath: keyPath,

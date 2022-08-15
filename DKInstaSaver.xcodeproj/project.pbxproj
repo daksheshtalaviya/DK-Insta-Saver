@@ -35,6 +35,7 @@
 		524F87A528A824E200F59857 /* Mashup_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F879428A824E100F59857 /* Mashup_info.swift */; };
 		524F87A628A824E200F59857 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F879528A824E100F59857 /* Thumbnails.swift */; };
 		524F87AA28A824E200F59857 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F879928A824E100F59857 /* Location.swift */; };
+		52521B9A28AA4E0600522253 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */; };
 		5252E079289FBA7200501755 /* HomeController+MediaDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E078289FBA7200501755 /* HomeController+MediaDownloader.swift */; };
 		5252E07B289FC70000501755 /* WKWebView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E07A289FC70000501755 /* WKWebView+Extensions.swift */; };
 		5252E07D28A0205000501755 /* HomeController+APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E07C28A0205000501755 /* HomeController+APIServices.swift */; };
@@ -50,6 +51,13 @@
 		525CF18028A8D1DB0013BEF9 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF17F28A8D1DB0013BEF9 /* AppManager.swift */; };
 		525CF18328A8FFBC0013BEF9 /* DownloadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF18228A8FFBB0013BEF9 /* DownloadViewModel.swift */; };
 		525CF18528A904620013BEF9 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF18428A904610013BEF9 /* DownloadManager.swift */; };
+		525CF18928A949B00013BEF9 /* UserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF18728A949B00013BEF9 /* UserDetailController.swift */; };
+		525CF18A28A949B00013BEF9 /* UserDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525CF18828A949B00013BEF9 /* UserDetailController.xib */; };
+		525CF18D28A949E40013BEF9 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF18C28A949E40013BEF9 /* UserDetailViewModel.swift */; };
+		525CF19228A957A00013BEF9 /* MediaGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF19028A957A00013BEF9 /* MediaGridCell.swift */; };
+		525CF19328A957A00013BEF9 /* MediaGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525CF19128A957A00013BEF9 /* MediaGridCell.xib */; };
+		525CF19528A9710F0013BEF9 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF19428A9710F0013BEF9 /* UIImageView+Extensions.swift */; };
+		525CF19728A977410013BEF9 /* UserDetailController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CF19628A977410013BEF9 /* UserDetailController+UICollectionView.swift */; };
 		52A2AB0E2895766A00169ACF /* DSMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2AAE72895766A00169ACF /* DSMessages.swift */; };
 		52A2AB0F2895766A00169ACF /* DSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2AAE82895766A00169ACF /* DSConstants.swift */; };
 		52A2AB102895766A00169ACF /* UIProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2AAE92895766A00169ACF /* UIProperty.swift */; };
@@ -119,6 +127,7 @@
 		524F879428A824E100F59857 /* Mashup_info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mashup_info.swift; sourceTree = "<group>"; };
 		524F879528A824E100F59857 /* Thumbnails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		524F879928A824E100F59857 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		5252E078289FBA7200501755 /* HomeController+MediaDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+MediaDownloader.swift"; sourceTree = "<group>"; };
 		5252E07A289FC70000501755 /* WKWebView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extensions.swift"; sourceTree = "<group>"; };
 		5252E07C28A0205000501755 /* HomeController+APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+APIServices.swift"; sourceTree = "<group>"; };
@@ -134,6 +143,13 @@
 		525CF17F28A8D1DB0013BEF9 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		525CF18228A8FFBB0013BEF9 /* DownloadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewModel.swift; sourceTree = "<group>"; };
 		525CF18428A904610013BEF9 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		525CF18728A949B00013BEF9 /* UserDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailController.swift; sourceTree = "<group>"; };
+		525CF18828A949B00013BEF9 /* UserDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailController.xib; sourceTree = "<group>"; };
+		525CF18C28A949E40013BEF9 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		525CF19028A957A00013BEF9 /* MediaGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGridCell.swift; sourceTree = "<group>"; };
+		525CF19128A957A00013BEF9 /* MediaGridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaGridCell.xib; sourceTree = "<group>"; };
+		525CF19428A9710F0013BEF9 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		525CF19628A977410013BEF9 /* UserDetailController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDetailController+UICollectionView.swift"; sourceTree = "<group>"; };
 		52A2AAE72895766A00169ACF /* DSMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSMessages.swift; sourceTree = "<group>"; };
 		52A2AAE82895766A00169ACF /* DSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSConstants.swift; sourceTree = "<group>"; };
 		52A2AAE92895766A00169ACF /* UIProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIProperty.swift; sourceTree = "<group>"; };
@@ -305,10 +321,10 @@
 			isa = PBXGroup;
 			children = (
 				525CF17F28A8D1DB0013BEF9 /* AppManager.swift */,
+				525CF18428A904610013BEF9 /* DownloadManager.swift */,
 				524F877528A7E57800F59857 /* ProgressHUDManager.swift */,
 				5252E07E28A02EA600501755 /* StorageManager.swift */,
 				524F877B28A8088700F59857 /* APIManager */,
-				525CF18428A904610013BEF9 /* DownloadManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -359,6 +375,43 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		525CF18628A949990013BEF9 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				525CF18728A949B00013BEF9 /* UserDetailController.swift */,
+				525CF19628A977410013BEF9 /* UserDetailController+UICollectionView.swift */,
+				525CF18828A949B00013BEF9 /* UserDetailController.xib */,
+				525CF18E28A9574D0013BEF9 /* CustomCell */,
+				525CF18B28A949D10013BEF9 /* ViewModel */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		525CF18B28A949D10013BEF9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				525CF18C28A949E40013BEF9 /* UserDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		525CF18E28A9574D0013BEF9 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				525CF18F28A9575A0013BEF9 /* MediaGridCell */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		525CF18F28A9575A0013BEF9 /* MediaGridCell */ = {
+			isa = PBXGroup;
+			children = (
+				525CF19028A957A00013BEF9 /* MediaGridCell.swift */,
+				525CF19128A957A00013BEF9 /* MediaGridCell.xib */,
+			);
+			path = MediaGridCell;
+			sourceTree = "<group>";
+		};
 		52A2AAE62895766A00169ACF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,19 +442,21 @@
 				52A2AAF92895766A00169ACF /* Optional+Extensions.swift */,
 				52A2AAF62895766A00169ACF /* Sequence+Extensions.swift */,
 				52A2AAF02895766A00169ACF /* String+Extensions.swift */,
+				525CF17628A8C5B90013BEF9 /* UIApplication+Extensions.swift */,
 				52A2AAEE2895766A00169ACF /* UIButton+Extensions.swift */,
 				52A2AB002895766A00169ACF /* UICollectionView+Extensions.swift */,
 				52A2AAF22895766A00169ACF /* UIColor+Extensions.swift */,
 				52A2AAF42895766A00169ACF /* UIDevice+Extensions.swift */,
 				52A2AAF32895766A00169ACF /* UIImage+Extensions.swift */,
+				525CF19428A9710F0013BEF9 /* UIImageView+Extensions.swift */,
 				52A2AAFD2895766A00169ACF /* UINib+Extensions.swift */,
 				52A2AAFA2895766A00169ACF /* UIScrollView+Extensions.swift */,
+				52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */,
 				52A2AAF82895766A00169ACF /* UITableView+Extensions.swift */,
 				52A2AAEF2895766A00169ACF /* UIView+Extensions.swift */,
 				52A2AAED2895766A00169ACF /* UIViewController+Extensions.swift */,
 				525CF17428A8C54C0013BEF9 /* UIWindow+Extensions.swift */,
 				5252E07A289FC70000501755 /* WKWebView+Extensions.swift */,
-				525CF17628A8C5B90013BEF9 /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,6 +490,7 @@
 				525CF16E28A8C3920013BEF9 /* Dashboard */,
 				525CF17A28A8D0560013BEF9 /* Download */,
 				525CF16D28A8C3870013BEF9 /* Home */,
+				525CF18628A949990013BEF9 /* UserDetail */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -508,11 +564,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525CF19328A957A00013BEF9 /* MediaGridCell.xib in Resources */,
 				525CF17E28A8D1120013BEF9 /* DownloadController.xib in Resources */,
 				525CF17928A8C72E0013BEF9 /* HomeController.xib in Resources */,
 				52484EB7288DC65B0012F8A2 /* LaunchScreen.storyboard in Resources */,
 				52484EB4288DC65B0012F8A2 /* Assets.xcassets in Resources */,
 				52484EB2288DC6590012F8A2 /* Main.storyboard in Resources */,
+				525CF18A28A949B00013BEF9 /* UserDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +643,7 @@
 				524F876F28A7C16E00F59857 /* PreviewComments.swift in Sources */,
 				52A2AB242895766A00169ACF /* Data+Extensions.swift in Sources */,
 				525CF17028A8C3A30013BEF9 /* DashboardController.swift in Sources */,
+				52521B9A28AA4E0600522253 /* UISegmentedControl+Extensions.swift in Sources */,
 				52A2AB2B2895766A00169ACF /* DSIconButton.swift in Sources */,
 				524F876828A7C16E00F59857 /* Candidates.swift in Sources */,
 				525CF18028A8D1DB0013BEF9 /* AppManager.swift in Sources */,
@@ -613,8 +672,10 @@
 				52A2AB252895766A00169ACF /* Collection+Extensions.swift in Sources */,
 				52A2AB202895766A00169ACF /* UIScrollView+Extensions.swift in Sources */,
 				524F876728A7C16E00F59857 /* Caption.swift in Sources */,
+				525CF18D28A949E40013BEF9 /* UserDetailViewModel.swift in Sources */,
 				52A2AB282895766A00169ACF /* DSLightLabel.swift in Sources */,
 				524F876E28A7C16E00F59857 /* SharingFrictionInfo.swift in Sources */,
+				525CF19228A957A00013BEF9 /* MediaGridCell.swift in Sources */,
 				524F877828A8023300F59857 /* APIManager.swift in Sources */,
 				52A2AB1E2895766A00169ACF /* UITableView+Extensions.swift in Sources */,
 				52A2AB1F2895766A00169ACF /* Optional+Extensions.swift in Sources */,
@@ -625,13 +686,16 @@
 				524F876D28A7C16E00F59857 /* FriendshipStatus.swift in Sources */,
 				5258512828A2E4D400A425D9 /* DKURLProtocol.swift in Sources */,
 				52A2AB232895766A00169ACF /* UINib+Extensions.swift in Sources */,
+				525CF19528A9710F0013BEF9 /* UIImageView+Extensions.swift in Sources */,
 				5252E07D28A0205000501755 /* HomeController+APIServices.swift in Sources */,
 				524F876C28A7C16E00F59857 /* CommentInformTreatment.swift in Sources */,
 				52A2AB222895766A00169ACF /* Number+Extensions.swift in Sources */,
+				525CF19728A977410013BEF9 /* UserDetailController+UICollectionView.swift in Sources */,
 				524F87A528A824E200F59857 /* Mashup_info.swift in Sources */,
 				524F87AA28A824E200F59857 /* Location.swift in Sources */,
 				52A2AB152895766A00169ACF /* UIView+Extensions.swift in Sources */,
 				524F878E28A8214100F59857 /* StoryFeedMedia.swift in Sources */,
+				525CF18928A949B00013BEF9 /* UserDetailController.swift in Sources */,
 				52A2AB2C2895766A00169ACF /* DSButtonDark.swift in Sources */,
 				524F878828A8214100F59857 /* VideoVersions.swift in Sources */,
 				52A2AB302895766A00169ACF /* HomeController.swift in Sources */,

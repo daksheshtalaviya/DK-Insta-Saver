@@ -63,7 +63,7 @@ extension APIManager {
             }).store(in: &cancellable)
     }
     
-    static func getUserId(userName: String) async throws -> User {
+    static func getUserDetail(userName: String) async throws -> User {
         DSLog.log("\(#function) userName: \(userName)")
         
         guard let url: URL = "https://i.instagram.com/api/v1/users/web_profile_info/?username=\(userName)".url else { throw APIError.invalidUrl }

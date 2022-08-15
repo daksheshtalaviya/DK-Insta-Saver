@@ -12,7 +12,7 @@ class AppManager {
     static let shared: AppManager = AppManager()
     
     var dashboard: DashboardController? {
-        UIApplication.shared.currentKeyWindow?.rootViewController as? DashboardController
+        (UIApplication.shared.currentKeyWindow?.rootViewController as? UINavigationController)?.topViewController as? DashboardController
     }
     
     func configure() {

@@ -54,7 +54,7 @@ extension HomeController {
         
         Task {
             do {
-                let user = try await APIManager.getUserId(userName: "programmer.pro.dev")
+                let user = try await APIManager.getUserDetail(userName: "programmer.pro.dev")
                 guard let userId = user.id else { return }
                 DSLog.log("userId: \(userId)")
 

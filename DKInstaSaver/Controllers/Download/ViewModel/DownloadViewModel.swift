@@ -50,4 +50,20 @@ class DownloadViewModel {
 
 extension DownloadViewModel {
     
+    func getUser(userName: String?) async throws -> User {
+        DSLog.log("userName: \(userName ?? "")")
+        
+        guard let userName = userName?.trim else { throw APIError.invalidUrl }
+        
+        guard !AppConfig.cookies.isEmpty else {
+            await AppManager.shared.dashboard?.webView?.getCookies { _ in
+//                try await self.getUser(userName: userName)
+            }
+            throw APIError.invalidUrl
+        }
+        
+        let user = try await APIManager.getUserDetail(userName: userName)
+        DSLog.log("user id: \(user.id ?? "")")
+        return user
+    }
 }

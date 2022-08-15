@@ -15,14 +15,13 @@ enum EnvironmentType {
 }
 
 enum DSImage {
-    
     case appIcon
-    case checkmark
-
+    case video
+    
     var image: UIImage {
         switch self {
-        case .appIcon   : return #imageLiteral(resourceName   : "app_logo")
-        case .checkmark : return #imageLiteral(resourceName : "ic_checkmark")
+        case .appIcon : return #imageLiteral(resourceName : "ic_app_logo")
+        case .video: return #imageLiteral(resourceName : "ic_video")
         }
     }
 }

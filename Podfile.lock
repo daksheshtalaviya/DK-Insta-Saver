@@ -7,10 +7,14 @@ PODS:
   - KRProgressHUD (3.4.7):
     - KRActivityIndicatorView (= 3.0.7)
   - ObjectMapper (3.5.3)
+  - SDWebImage (5.13.2):
+    - SDWebImage/Core (= 5.13.2)
+  - SDWebImage/Core (5.13.2)
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 6.2)
   - KRProgressHUD (~> 3.4)
+  - SDWebImage (~> 5.13)
 
 SPEC REPOS:
   trunk:
@@ -19,6 +23,7 @@ SPEC REPOS:
     - KRActivityIndicatorView
     - KRProgressHUD
     - ObjectMapper
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
@@ -26,7 +31,8 @@ SPEC CHECKSUMS:
   KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
   KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
 
-PODFILE CHECKSUM: c4bd48fb3c498e58c960b87deedb700a09f1bed0
+PODFILE CHECKSUM: c2f032c54ee72442cc62ffaa7462f4d956fedc7d
 
 COCOAPODS: 1.11.3
