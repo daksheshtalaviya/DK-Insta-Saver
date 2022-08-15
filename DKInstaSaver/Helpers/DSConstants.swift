@@ -8,7 +8,7 @@
 
 import UIKit
 
-let instagramUrl: String = "https://www.instagram.com/instagram/"
+let instagramUrl: String = "\(APIManager.baseUrlWeb)/instagram/"
 
 enum EnvironmentType {
     case production, development
@@ -21,7 +21,7 @@ enum DSImage {
     var image: UIImage {
         switch self {
         case .appIcon : return #imageLiteral(resourceName : "ic_app_logo")
-        case .video: return #imageLiteral(resourceName : "ic_video")
+        case .video: return #imageLiteral(resourceName : "ic_video.pdf")
         }
     }
 }

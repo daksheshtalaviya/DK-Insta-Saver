@@ -17,7 +17,9 @@ enum APIError: Error {
 
 class APIManager {
     static var cancellable: Set<AnyCancellable> = []
-    
+    static let baseUrl: String = "https://i.instagram.com/api/v1"
+    static let baseUrlWeb: String = "https://www.instagram.com"
+
     static func requestObject<T: Model>(request: URLRequest, keyPath: String? = nil) -> Future<T, Error> {
         Future { promise in
             AF.request(request)

@@ -7,7 +7,7 @@ import Foundation
 
 extension BidirectionalCollection where Iterator.Element: Equatable {
     typealias Element = Self.Iterator.Element
-
+    
     func after(_ item: Element, loop: Bool = false) -> Element? {
         if let itemIndex = self.firstIndex(of: item) {
             let lastItem: Bool = (index(after:itemIndex) == endIndex)
@@ -21,7 +21,7 @@ extension BidirectionalCollection where Iterator.Element: Equatable {
         }
         return nil
     }
-
+    
     func before(_ item: Element, loop: Bool = false) -> Element? {
         if let itemIndex = self.firstIndex(of: item) {
             let firstItem: Bool = (itemIndex == startIndex)
@@ -34,5 +34,17 @@ extension BidirectionalCollection where Iterator.Element: Equatable {
             }
         }
         return nil
+    }
+    
+}
+
+extension Collection {
+    
+    /// Returns the element at the specified index if it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Element? {
+        guard index >= startIndex, index < endIndex else {
+            return nil
+        }
+        return self[index]
     }
 }

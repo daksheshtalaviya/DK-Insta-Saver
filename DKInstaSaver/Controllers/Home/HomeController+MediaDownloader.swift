@@ -15,7 +15,6 @@ extension HomeController {
         let alertController = UIAlertController(title: "Download Media", message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Download", style: .destructive, handler: { action in
             self.startDownloadMedia()
-//            self.startDownloadStory()
         }))
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         
@@ -106,7 +105,7 @@ extension HomeController {
 //    func getPageSource(completion: ((String)->())? = nil) {
 //        DSLog.log()
 //
-//        guard let urlPost = "https://www.instagram.com/p/CfUeC_yLS-_IMk4WfVwoPb3p4H05iJlw5HT7x80/?__a=1&__d=dis".url else { return }
+//        guard let urlPost = "\(APIManager.baseUrlWeb)/p/CfUeC_yLS-_IMk4WfVwoPb3p4H05iJlw5HT7x80/?__a=1&__d=dis".url else { return }
 //        do {
 //            let data = try Data(contentsOf: urlPost)
 //            let strPage = String(data: data, encoding: .utf8)
@@ -159,20 +158,6 @@ extension HomeController {
 
 extension HomeController {
     //MARK: - API Services
-    
-//    func getMediaInfo(mediaUrl: String) {
-//        DSLog.log("\(#function) mediaUrl: \(mediaUrl)")
-//
-//        guard !AppConfig.cookies.isEmpty else {
-//            getCookies { _ in
-//                self.getMediaInfo(mediaUrl: mediaUrl)
-//            }
-//            return
-//        }
-//
-//        getMediaInfoAPI(mediaId: "2898915245954059380")
-//
-//    }
     
     func getPostDetail(shortCode: String) {
         DSLog.log("\(#function) shortCode: \(shortCode)")

@@ -28,7 +28,7 @@ extension APIManager {
         DSLog.log("\(#function) shortCode: \(shortCode)")
         
         return Future { promise in
-            guard let url: URL = "https://www.instagram.com/p/\(shortCode)/?__a=1&__d=dis".url else { return }
+            guard let url: URL = "\(APIManager.baseUrlWeb)/p/\(shortCode)/?__a=1&__d=dis".url else { return }
             var request: URLRequest = URLRequest(url: url)
             request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
             
@@ -40,7 +40,7 @@ extension APIManager {
         DSLog.log("\(#function) mediaId: \(mediaId)")
         
         return Future { promise in
-            guard let url: URL = "https://i.instagram.com/api/v1/media/\(mediaId)/info/".url else { return }
+            guard let url: URL = "\(APIManager.baseUrl)/media/\(mediaId)/info/".url else { return }
             var request: URLRequest = URLRequest(url: url)
             request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
             request.addValue(AppConfig.appId, forHTTPHeaderField: "X-IG-App-ID")
@@ -66,7 +66,7 @@ extension APIManager {
     static func getUserDetail(userName: String) async throws -> User {
         DSLog.log("\(#function) userName: \(userName)")
         
-        guard let url: URL = "https://i.instagram.com/api/v1/users/web_profile_info/?username=\(userName)".url else { throw APIError.invalidUrl }
+        guard let url: URL = "\(APIManager.baseUrl)/users/web_profile_info/?username=\(userName)".url else { throw APIError.invalidUrl }
         var request: URLRequest = URLRequest(url: url)
         request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
         request.addValue(AppConfig.appId, forHTTPHeaderField: "X-IG-App-ID")
@@ -84,7 +84,7 @@ extension APIManager {
     static func getStories(userId: String) async throws -> [ReelsMedia] {
         DSLog.log("\(#function) userId: \(userId)")
         
-        guard let url: URL = "https://i.instagram.com/api/v1/feed/reels_media/?reel_ids=\(userId)".url else { throw APIError.invalidUrl }
+        guard let url: URL = "\(APIManager.baseUrl)/feed/reels_media/?reel_ids=\(userId)".url else { throw APIError.invalidUrl }
         var request: URLRequest = URLRequest(url: url)
         request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
         request.addValue(AppConfig.appId, forHTTPHeaderField: "X-IG-App-ID")
@@ -95,6 +95,24 @@ extension APIManager {
                 }, receiveValue: { (items : [ReelsMedia]) in
                     DSLog.log("items: \(items.count)")
                     continuation.resume(returning: items)
+                }).store(in: &cancellable)
+        })
+    }
+    
+    static func getPosts(userId: String, maxId: String?) async throws -> Posts {
+        DSLog.log("\(#function) max_id: \(maxId ?? "")")
+        
+        guard let url: URL = "\(APIManager.baseUrl)/feed/user/\(userId)?max_id=\(maxId ?? "")".url else { throw APIError.invalidUrl }
+        var request: URLRequest = URLRequest(url: url)
+        request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
+        request.addValue(AppConfig.appId, forHTTPHeaderField: "X-IG-App-ID")
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+            requestObject(request: request)
+                .sink(receiveCompletion: { _ in
+                }, receiveValue: { (item : Posts) in
+                    DSLog.log("items: \(item.items?.count ?? 0)")
+                    continuation.resume(returning: item)
                 }).store(in: &cancellable)
         })
     }

@@ -36,6 +36,7 @@
 		524F87A628A824E200F59857 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F879528A824E100F59857 /* Thumbnails.swift */; };
 		524F87AA28A824E200F59857 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F879928A824E100F59857 /* Location.swift */; };
 		52521B9A28AA4E0600522253 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */; };
+		52521B9C28AA7A3B00522253 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521B9B28AA7A3B00522253 /* Posts.swift */; };
 		5252E079289FBA7200501755 /* HomeController+MediaDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E078289FBA7200501755 /* HomeController+MediaDownloader.swift */; };
 		5252E07B289FC70000501755 /* WKWebView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E07A289FC70000501755 /* WKWebView+Extensions.swift */; };
 		5252E07D28A0205000501755 /* HomeController+APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E07C28A0205000501755 /* HomeController+APIServices.swift */; };
@@ -128,6 +129,7 @@
 		524F879528A824E100F59857 /* Thumbnails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		524F879928A824E100F59857 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
+		52521B9B28AA7A3B00522253 /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		5252E078289FBA7200501755 /* HomeController+MediaDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+MediaDownloader.swift"; sourceTree = "<group>"; };
 		5252E07A289FC70000501755 /* WKWebView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extensions.swift"; sourceTree = "<group>"; };
 		5252E07C28A0205000501755 /* HomeController+APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+APIServices.swift"; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		524F875728A7C15900F59857 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52521B9B28AA7A3B00522253 /* Posts.swift */,
 				524F875C28A7C16E00F59857 /* User.swift */,
 				524F879028A8248300F59857 /* Image */,
 				524F875828A7C16400F59857 /* Media */,
@@ -701,6 +704,7 @@
 				52A2AB302895766A00169ACF /* HomeController.swift in Sources */,
 				52A2AB272895766A00169ACF /* BaseViewController.swift in Sources */,
 				524F876A28A7C16E00F59857 /* Comments.swift in Sources */,
+				52521B9C28AA7A3B00522253 /* Posts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

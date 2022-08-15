@@ -24,20 +24,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="222" height="222"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IoS-zU-hdb">
-                                <rect key="frame" x="172" y="10" width="40" height="40"/>
+                                <rect key="frame" x="10" y="192" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IoS-zU-hdb" secondAttribute="height" id="aXn-kP-pPP"/>
-                                    <constraint firstAttribute="height" constant="40" id="sK0-b4-YKD"/>
+                                    <constraint firstAttribute="height" constant="20" id="sK0-b4-YKD"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wsI-Ox-FNp" firstAttribute="top" secondItem="sZW-Fl-bGL" secondAttribute="top" id="3tz-4w-s64"/>
+                            <constraint firstItem="IoS-zU-hdb" firstAttribute="leading" secondItem="sZW-Fl-bGL" secondAttribute="leading" constant="10" id="5yv-vW-8X9"/>
                             <constraint firstAttribute="trailing" secondItem="wsI-Ox-FNp" secondAttribute="trailing" id="CEv-pR-HAs"/>
-                            <constraint firstItem="IoS-zU-hdb" firstAttribute="top" secondItem="sZW-Fl-bGL" secondAttribute="top" constant="10" id="SdW-Z4-NOa"/>
-                            <constraint firstAttribute="trailing" secondItem="IoS-zU-hdb" secondAttribute="trailing" constant="10" id="aBX-XW-InR"/>
                             <constraint firstItem="wsI-Ox-FNp" firstAttribute="leading" secondItem="sZW-Fl-bGL" secondAttribute="leading" id="cob-Mj-6p1"/>
+                            <constraint firstAttribute="bottom" secondItem="IoS-zU-hdb" secondAttribute="bottom" constant="10" id="fWH-e3-gn7"/>
                             <constraint firstAttribute="bottom" secondItem="wsI-Ox-FNp" secondAttribute="bottom" id="i2V-y9-5Mw"/>
                         </constraints>
                     </view>
@@ -53,7 +53,7 @@
             <size key="customSize" width="259" height="168"/>
             <connections>
                 <outlet property="imgMedia" destination="wsI-Ox-FNp" id="V0I-qS-OYH"/>
-                <outlet property="imgMediaType" destination="IoS-zU-hdb" id="kps-7F-O89"/>
+                <outlet property="imgMediaType" destination="IoS-zU-hdb" id="CcU-gr-qeu"/>
             </connections>
             <point key="canvasLocation" x="289.13043478260875" y="106.47321428571428"/>
         </collectionViewCell>

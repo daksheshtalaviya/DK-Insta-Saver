@@ -114,7 +114,7 @@ extension HomeController : WKNavigationDelegate {
         let url = navigationAction.request.url
         DSLog.log("url: \((url?.absoluteString).default())")
         
-        if url?.absoluteString == "https://www.instagram.com/" {
+        if url?.absoluteString == "\(APIManager.baseUrlWeb)/" {
 //            webView.load(scheme.authenticationURlRequest)
             return .allow
         }

@@ -14,7 +14,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct Media : Mappable {
+struct Media : Mappable, Equatable {
     
     enum MediaType : Int {
         case image   = 1
@@ -168,6 +168,9 @@ struct Media : Mappable {
         music_metadata <- map["music_metadata"]
     }
 
+    static func == (lhs: Media, rhs: Media) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 extension Media {

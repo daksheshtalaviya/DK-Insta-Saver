@@ -9,15 +9,7 @@ import UIKit
 import Alamofire
 
 class UserDetailController: BaseViewController {
-
-    @IBOutlet var lblName: UILabel!
-    @IBOutlet var lblUserName: UILabel!
-    @IBOutlet var btnImage: UIButton!
-    @IBOutlet var segmentMediaType: UISegmentedControl!
-    @IBOutlet var clMedia: UICollectionView!
-
-    var user: User?
-
+    
     enum MediaSegmentType: Int, CaseIterable {
         case stories
         case images
@@ -30,6 +22,18 @@ class UserDetailController: BaseViewController {
             case .videos: return "Videos"
             }
         }
+    }
+    
+    @IBOutlet var lblName: UILabel!
+    @IBOutlet var lblUserName: UILabel!
+    @IBOutlet var btnImage: UIButton!
+    @IBOutlet var segmentMediaType: UISegmentedControl!
+    @IBOutlet var clMedia: UICollectionView!
+
+    lazy var viewModel: UserDetailViewModel = UserDetailViewModel(controller: self)
+    var user: User?
+    var selectedMediaSegmentType: MediaSegmentType {
+        return MediaSegmentType(rawValue: segmentMediaType.selectedSegmentIndex) ?? .stories
     }
     
     override func viewDidLoad() {
@@ -45,6 +49,7 @@ class UserDetailController: BaseViewController {
         configureCollection()
         
         setDetail()
+        onMediaSegmentType(segmentMediaType)
     }
     
     private func configureMediaSegmentTypes() {
@@ -58,6 +63,7 @@ class UserDetailController: BaseViewController {
         }
         
         segmentMediaType.selectedSegmentIndex = 0
+        segmentMediaType.addTarget(self, action: #selector(onMediaSegmentType(_:)), for: .valueChanged)
     }
     
     private func configureButtons() {
@@ -83,5 +89,14 @@ class UserDetailController: BaseViewController {
             }
         })
 
+    }
+}
+
+
+extension UserDetailController {
+    
+    @objc fileprivate func onMediaSegmentType(_ sender: UISegmentedControl) {
+        DSLog.log()
+        viewModel.refreshData()
     }
 }

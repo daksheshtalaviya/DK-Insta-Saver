@@ -11,28 +11,55 @@ extension UserDetailController {
     
     func configureCollection() {
         
+        clMedia.registerNib(type: MediaGridCell.self, reuseIdentifier: MediaGridCell.identifier)
         clMedia.dataSource = self
         clMedia.delegate = self
+
+        let rowCount: CGFloat = 3
+        if let flowLayout = clMedia.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .vertical
+            flowLayout.minimumInteritemSpacing = 5
+            flowLayout.minimumLineSpacing = 5
+            
+            let horizontalPadding: CGFloat = 20
+            let spaceBetweenItems = flowLayout.minimumInteritemSpacing * (rowCount - 1)
+            let cellWidth: CGFloat = ((UIScreen.main.bounds.size.width - spaceBetweenItems - horizontalPadding) / rowCount) - 0.1
+            flowLayout.itemSize = .init(width: cellWidth, height: cellWidth)
+        }
     }
     
-    func refreshData() {
+    func reloadData() {
         
+        DispatchQueue.main.async {
+            self.clMedia.reloadData()
+        }
     }
 }
 
 extension UserDetailController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return viewModel.items[selectedMediaSegmentType]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaGridCell.identifier, for: indexPath) as? MediaGridCell else { return UICollectionViewCell() }
+        let model = viewModel.items[selectedMediaSegmentType]?[safe: indexPath.row]
+        cell.model = model
+        return cell
     }
-    
     
 }
 
 extension UserDetailController : UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DSLog.log("indexPath: \(indexPath)")
+        
+        guard let model = viewModel.items[selectedMediaSegmentType]?[safe: indexPath.row],
+        let media = model as? Media else { return }
+        DSLog.log("media: \(media.id ?? "")")
+        
+    }
 }
