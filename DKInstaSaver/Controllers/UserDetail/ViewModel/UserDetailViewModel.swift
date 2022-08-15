@@ -25,13 +25,13 @@ class UserDetailViewModel {
         loadMedias()
     }
     
-    func loadMedias() {
+    func loadMedias(loadMore: Bool = false) {
         DSLog.log()
         
         controller.reloadData()
 
         let type = controller.selectedMediaSegmentType
-        guard items[type]?.count ?? 0 == 0 else { return }
+        guard items[type]?.count ?? 0 == 0 || loadMore else { return }
         
         Task {
             do {
@@ -49,10 +49,21 @@ class UserDetailViewModel {
                     let medias: [Media] = posts.items ?? []
                     DSLog.log("medias: \(medias.count)")
                     
+                    if items[.images] == nil {
+                        items[.images] = []
+                    }
+                    if items[.videos] == nil {
+                        items[.videos] = []
+                    }
+                    
+                    let videos = medias.filter({$0.media_type == .video})
+                    let images = medias.filter({$0.media_type == .image})
                     if type == .videos {
-                        items[type] = medias.filter({$0.media_type == .video})
+                        items[type]?.append(contentsOf: videos)
+                        items[.images]?.append(contentsOf: images)
                     } else {
-                        items[type] = medias.filter({$0.media_type == .image})
+                        items[.videos]?.append(contentsOf: videos)
+                        items[type]?.append(contentsOf: images)
                     }
                     maxIds[type] = [posts.next_max_id : posts.more_available ?? false]
                     break

@@ -32,6 +32,7 @@ class UserDetailController: BaseViewController {
 
     lazy var viewModel: UserDetailViewModel = UserDetailViewModel(controller: self)
     var user: User?
+    var waiting: Bool = false
     var selectedMediaSegmentType: MediaSegmentType {
         return MediaSegmentType(rawValue: segmentMediaType.selectedSegmentIndex) ?? .stories
     }
