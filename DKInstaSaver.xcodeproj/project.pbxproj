@@ -37,6 +37,9 @@
 		524F87AA28A824E200F59857 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F879928A824E100F59857 /* Location.swift */; };
 		52521B9A28AA4E0600522253 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */; };
 		52521B9C28AA7A3B00522253 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521B9B28AA7A3B00522253 /* Posts.swift */; };
+		52521BA028AA8CD100522253 /* MediaPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521B9E28AA8CD100522253 /* MediaPreviewController.swift */; };
+		52521BA128AA8CD100522253 /* MediaPreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52521B9F28AA8CD100522253 /* MediaPreviewController.xib */; };
+		52521BA428AA8CE500522253 /* MediaPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52521BA328AA8CE500522253 /* MediaPreviewViewModel.swift */; };
 		5252E079289FBA7200501755 /* HomeController+MediaDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E078289FBA7200501755 /* HomeController+MediaDownloader.swift */; };
 		5252E07B289FC70000501755 /* WKWebView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E07A289FC70000501755 /* WKWebView+Extensions.swift */; };
 		5252E07D28A0205000501755 /* HomeController+APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252E07C28A0205000501755 /* HomeController+APIServices.swift */; };
@@ -130,6 +133,9 @@
 		524F879928A824E100F59857 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		52521B9928AA4E0600522253 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		52521B9B28AA7A3B00522253 /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		52521B9E28AA8CD100522253 /* MediaPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPreviewController.swift; sourceTree = "<group>"; };
+		52521B9F28AA8CD100522253 /* MediaPreviewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaPreviewController.xib; sourceTree = "<group>"; };
+		52521BA328AA8CE500522253 /* MediaPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPreviewViewModel.swift; sourceTree = "<group>"; };
 		5252E078289FBA7200501755 /* HomeController+MediaDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+MediaDownloader.swift"; sourceTree = "<group>"; };
 		5252E07A289FC70000501755 /* WKWebView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extensions.swift"; sourceTree = "<group>"; };
 		5252E07C28A0205000501755 /* HomeController+APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+APIServices.swift"; sourceTree = "<group>"; };
@@ -320,6 +326,24 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		52521B9D28AA8CB800522253 /* MediaPreview */ = {
+			isa = PBXGroup;
+			children = (
+				52521BA228AA8CD500522253 /* ViewModel */,
+				52521B9E28AA8CD100522253 /* MediaPreviewController.swift */,
+				52521B9F28AA8CD100522253 /* MediaPreviewController.xib */,
+			);
+			path = MediaPreview;
+			sourceTree = "<group>";
+		};
+		52521BA228AA8CD500522253 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				52521BA328AA8CE500522253 /* MediaPreviewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5252E08028A02EAB00501755 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +517,7 @@
 				525CF16E28A8C3920013BEF9 /* Dashboard */,
 				525CF17A28A8D0560013BEF9 /* Download */,
 				525CF16D28A8C3870013BEF9 /* Home */,
+				52521B9D28AA8CB800522253 /* MediaPreview */,
 				525CF18628A949990013BEF9 /* UserDetail */,
 			);
 			path = Controllers;
@@ -568,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				525CF19328A957A00013BEF9 /* MediaGridCell.xib in Resources */,
+				52521BA128AA8CD100522253 /* MediaPreviewController.xib in Resources */,
 				525CF17E28A8D1120013BEF9 /* DownloadController.xib in Resources */,
 				525CF17928A8C72E0013BEF9 /* HomeController.xib in Resources */,
 				52484EB7288DC65B0012F8A2 /* LaunchScreen.storyboard in Resources */,
@@ -665,6 +691,7 @@
 				52A2AB172895766A00169ACF /* AVPlayer+Extensions.swift in Sources */,
 				524F876B28A7C16E00F59857 /* FanClubInfo.swift in Sources */,
 				52A2AB102895766A00169ACF /* UIProperty.swift in Sources */,
+				52521BA428AA8CE500522253 /* MediaPreviewViewModel.swift in Sources */,
 				5252E07F28A02EA600501755 /* StorageManager.swift in Sources */,
 				52A2AB182895766A00169ACF /* UIColor+Extensions.swift in Sources */,
 				524F877A28A8088200F59857 /* APIManager+Services.swift in Sources */,
@@ -687,6 +714,7 @@
 				52A2AB0F2895766A00169ACF /* DSConstants.swift in Sources */,
 				52A2AB1D2895766A00169ACF /* NSObject+Extensions.swift in Sources */,
 				524F876D28A7C16E00F59857 /* FriendshipStatus.swift in Sources */,
+				52521BA028AA8CD100522253 /* MediaPreviewController.swift in Sources */,
 				5258512828A2E4D400A425D9 /* DKURLProtocol.swift in Sources */,
 				52A2AB232895766A00169ACF /* UINib+Extensions.swift in Sources */,
 				525CF19528A9710F0013BEF9 /* UIImageView+Extensions.swift in Sources */,

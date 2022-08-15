@@ -96,5 +96,6 @@ extension UserDetailController : UICollectionViewDelegate {
         let media = model as? Media else { return }
         DSLog.log("media: \(media.id ?? "")")
         
+        openMediaPreviewPage(media: media)
     }
 }

@@ -194,19 +194,21 @@ extension Media {
     }
 }
 
-extension Array where Element == Media {
+extension Media {
     
-    var getUrls: [String] {
-        self.compactMap { media in
-            switch media.media_type {
-            case .image:
-                return media.image_versions2?.originalCandidate?.url
-            case .video:
-                return media.originalVideoVersion?.url
-            case .multiple:
-                return nil
-            default: return nil
-            }
+    var thumbnailUrl: String? {
+        image_versions2?.originalCandidate?.url
+    }
+    
+    var originalMediaUrl: String? {
+        switch media_type {
+        case .image:
+            return image_versions2?.originalCandidate?.url
+        case .video:
+            return originalVideoVersion?.url
+        case .multiple:
+            return nil
+        default: return nil
         }
     }
 }

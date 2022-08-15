@@ -32,7 +32,6 @@ class UserDetailController: BaseViewController {
 
     lazy var viewModel: UserDetailViewModel = UserDetailViewModel(controller: self)
     var user: User?
-    var waiting: Bool = false
     var selectedMediaSegmentType: MediaSegmentType {
         return MediaSegmentType(rawValue: segmentMediaType.selectedSegmentIndex) ?? .stories
     }
@@ -99,5 +98,18 @@ extension UserDetailController {
     @objc fileprivate func onMediaSegmentType(_ sender: UISegmentedControl) {
         DSLog.log()
         viewModel.refreshData()
+    }
+}
+
+extension UserDetailController {
+    
+    func openMediaPreviewPage(media: Media) {
+        DSLog.log()
+        
+        let controller: MediaPreviewController = MediaPreviewController.instantiateFromNib()
+        controller.media = media
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

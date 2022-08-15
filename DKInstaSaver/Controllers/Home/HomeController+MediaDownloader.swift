@@ -61,7 +61,7 @@ extension HomeController {
                 guard !stories.isEmpty else {
                     ProgressHUDManager.showProgress(message: "Story not found")
                     return }
-                DSLog.log("stories: \(stories.compactMap({$0.items?.getUrls}))")
+                DSLog.log("stories: \(stories.compactMap({$0.items?.count ?? 0}))")
 
             } catch {
                 DSLog.log("error: \(error.localizedDescription)")
