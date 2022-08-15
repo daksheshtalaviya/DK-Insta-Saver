@@ -17,11 +17,13 @@ enum EnvironmentType {
 enum DSImage {
     case appIcon
     case video
-    
+    case multipleFile
+
     var image: UIImage {
         switch self {
         case .appIcon : return #imageLiteral(resourceName : "ic_app_logo")
-        case .video: return #imageLiteral(resourceName : "ic_video.pdf")
+        case .video: return #imageLiteral(resourceName : "ic_video")
+        case .multipleFile: return #imageLiteral(resourceName : "ic_multiple_file")
         }
     }
 }

@@ -13,6 +13,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 import ObjectMapper
+import UIKit
 
 struct Media : Mappable, Equatable {
     
@@ -21,6 +22,13 @@ struct Media : Mappable, Equatable {
         case video    = 2
         case multiple = 8
         
+        var icon: UIImage? {
+            switch self {
+            case .image: return nil
+            case .video: return DSImage.video.image
+            case .multiple: return DSImage.multipleFile.image
+            }
+        }
     }
     
     var taken_at : Int?
@@ -92,9 +100,12 @@ struct Media : Mappable, Equatable {
     var commerce_integrity_review_decision : String?
     var music_metadata : MusicMetadata?
 
-	init?(map: Map) {
-
-	}
+    //Carousel
+    var carousel_media_count : Int?
+    var carousel_media : [Media]?
+    var carousel_parent_id : String?
+    
+	init?(map: Map) { }
 
     mutating func mapping(map: Map) {
         
@@ -166,6 +177,11 @@ struct Media : Mappable, Equatable {
         integrity_review_decision <- map["integrity_review_decision"]
         commerce_integrity_review_decision <- map["commerce_integrity_review_decision"]
         music_metadata <- map["music_metadata"]
+        
+        carousel_media_count <- map["carousel_media_count"]
+        carousel_media <- map["carousel_media"]
+        carousel_parent_id <- map["carousel_parent_id"]
+        
     }
 
     static func == (lhs: Media, rhs: Media) -> Bool {

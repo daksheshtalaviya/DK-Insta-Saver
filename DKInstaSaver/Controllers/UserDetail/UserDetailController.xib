@@ -59,7 +59,7 @@
                     <rect key="frame" x="0.0" y="223" width="414" height="639"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KEW-dY-v1W">
-                            <rect key="frame" x="0.0" y="100" width="414" height="539"/>
+                            <rect key="frame" x="0.0" y="85" width="414" height="554"/>
                             <subviews>
                                 <segmentedControl contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rC5-OK-fUo">
                                     <rect key="frame" x="10" y="10" width="394" height="41"/>
@@ -75,7 +75,7 @@
                                     <color key="selectedSegmentTintColor" systemColor="systemPinkColor"/>
                                 </segmentedControl>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sjc-Sp-wnc">
-                                    <rect key="frame" x="10" y="60" width="394" height="469"/>
+                                    <rect key="frame" x="10" y="60" width="394" height="484"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cf2-Qk-e0k">
                                         <size key="itemSize" width="128" height="128"/>
@@ -90,7 +90,6 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="KEW-dY-v1W" firstAttribute="top" secondItem="HIL-cz-9gl" secondAttribute="top" constant="100" id="3fL-dQ-u6e"/>
                         <constraint firstAttribute="bottom" secondItem="KEW-dY-v1W" secondAttribute="bottom" id="9Zu-Ss-1FK"/>
                         <constraint firstAttribute="trailing" secondItem="KEW-dY-v1W" secondAttribute="trailing" id="C10-gL-dY2"/>
                         <constraint firstItem="KEW-dY-v1W" firstAttribute="leading" secondItem="HIL-cz-9gl" secondAttribute="leading" id="XeN-Jp-28K"/>
@@ -147,6 +146,7 @@
                 <constraint firstItem="LR8-01-TNi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oPs-co-jfB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LR8-01-TNi" secondAttribute="trailing" id="qJQ-kC-GPz"/>
                 <constraint firstItem="WKf-Lw-yfX" firstAttribute="top" secondItem="LR8-01-TNi" secondAttribute="top" constant="10" id="ryz-fc-IWM"/>
+                <constraint firstItem="KEW-dY-v1W" firstAttribute="top" secondItem="Ogm-X9-zaN" secondAttribute="bottom" constant="10" id="tsT-Rw-Fhy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HIL-cz-9gl" secondAttribute="trailing" id="vB7-Vt-u2P"/>
             </constraints>
             <point key="canvasLocation" x="139" y="67"/>

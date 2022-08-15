@@ -57,7 +57,7 @@ class UserDetailViewModel {
                     }
                     
                     let videos = medias.filter({$0.media_type == .video})
-                    let images = medias.filter({$0.media_type == .image})
+                    let images = medias.filter({$0.media_type == .image || $0.media_type == .multiple})
                     if type == .videos {
                         items[type]?.append(contentsOf: videos)
                         items[.images]?.append(contentsOf: images)

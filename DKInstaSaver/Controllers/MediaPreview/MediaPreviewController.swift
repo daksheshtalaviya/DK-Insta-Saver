@@ -27,11 +27,16 @@ class MediaPreviewController: BaseViewController {
     
     @IBOutlet weak var btnDownload: UIButton!
     @IBOutlet weak var btnShare: UIButton!
+    @IBOutlet weak var lblCurrentCount: UILabel!
+    @IBOutlet weak var stepperMedia: UIStepper!
     @IBOutlet var webView: WKWebView!
 
     lazy var viewModel: MediaPreviewViewModel = MediaPreviewViewModel(controller: self)
     var media: Media?
-    
+    var medias: [Media] = []
+    var currentMedia: Media? {
+        medias[safe: stepperMedia.value.toIntOrDefault]
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,8 +45,13 @@ class MediaPreviewController: BaseViewController {
     
     private func initialize() {
         
+        guard let media = media else { return }
+        medias = media.carousel_media ?? [media]
+        
         configureButtons()
+        configureStepper()
         configureWebView()
+        
         setDetail()
     }
     
@@ -53,7 +63,7 @@ class MediaPreviewController: BaseViewController {
         
         btnDownload.addAction(UIAction(handler: { sender in
             DSLog.log("btnDownload")
-            guard let url = self.media?.originalMediaUrl else { return }
+            guard let url = self.currentMedia?.originalMediaUrl else { return }
             DownloadManager.shared.downloadFile(url: url)
         }), for: .touchUpInside)
         
@@ -61,6 +71,30 @@ class MediaPreviewController: BaseViewController {
             DSLog.log("btnDownload")
             self.shareMedia()
         }), for: .touchUpInside)
+    }
+    
+    private func configureStepper() {
+        DSLog.log()
+
+        stepperMedia.minimumValue = 0
+        stepperMedia.maximumValue = Double(max(medias.count - 1, 0))
+        stepperMedia.value = 0
+        stepperMedia.setDecrementImage(stepperMedia.decrementImage(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        stepperMedia.setIncrementImage(stepperMedia.incrementImage(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        stepperMedia.subviews.first?.backgroundColor = .primary
+        stepperMedia.cornerRadius = 8
+        stepperMedia.tintColor = .white
+        
+        stepperMedia.addTarget(self, action: #selector(onClickStepperMedia(_:)), for: .valueChanged)
+        
+        onClickStepperMedia(stepperMedia)
+    }
+    
+    @objc private func onClickStepperMedia(_ sender: UIStepper) {
+        DSLog.log("sender: \(sender.value)")
+
+        lblCurrentCount.text = "\(stepperMedia.value.toIntOrDefault + 1) / \(stepperMedia.maximumValue.toIntOrDefault + 1)"
+        loadCurrentMedia()
     }
     
     private func configureWebView() {
@@ -77,16 +111,27 @@ class MediaPreviewController: BaseViewController {
     
     fileprivate func setDetail() {
         
-        lblTitle?.text = "\(media?.media_type == .video ? "Video" : "Image") Preview"
-        loadMedia()
+        lblTitle?.text = "Media Preview"
+        loadMedia(strUrl: media?.originalMediaUrl)
     }
 }
 
 extension MediaPreviewController {
     
-    fileprivate func loadMedia() {
+    fileprivate func loadCurrentMedia() {
+        let currentIndex: Int = Int(stepperMedia.value)
+        DSLog.log("currentIndex: \(currentIndex)")
+
+        let strUrl = medias[safe: currentIndex]?.originalMediaUrl
+        loadMedia(strUrl: strUrl)
+    }
+}
+
+extension MediaPreviewController {
+    
+    fileprivate func loadMedia(strUrl: String?) {
         
-        guard let url = media?.originalMediaUrl?.url else { return }
+        guard let url = strUrl?.url else { return }
         DSLog.log("url: \(url)")
         
         if media?.media_type == .video {
@@ -117,7 +162,7 @@ extension MediaPreviewController {
     
     fileprivate func shareMedia() {
         
-        guard let url = media?.originalMediaUrl?.url else { return }
+        guard let url = currentMedia?.originalMediaUrl?.url else { return }
         DSLog.log("url: \(url)")
         
         let sharedObjects: [Any] = [url]

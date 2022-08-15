@@ -51,5 +51,5 @@ extension UIColor {
 
 extension UIColor {
     
-    static let primary: UIColor = .init(hexCode: 0xcd5e49)
+    static let primary: UIColor = .systemPink//.init(hexCode: 0xcd5e49)
 }

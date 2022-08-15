@@ -23,12 +23,26 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wsI-Ox-FNp">
                                 <rect key="frame" x="0.0" y="0.0" width="222" height="222"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IoS-zU-hdb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_multiple_file" translatesAutoresizingMaskIntoConstraints="NO" id="IoS-zU-hdb">
                                 <rect key="frame" x="10" y="192" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IoS-zU-hdb" secondAttribute="height" id="aXn-kP-pPP"/>
                                     <constraint firstAttribute="height" constant="20" id="sK0-b4-YKD"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,4 +72,7 @@
             <point key="canvasLocation" x="289.13043478260875" y="106.47321428571428"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_multiple_file" width="24" height="24"/>
+    </resources>
 </document>
