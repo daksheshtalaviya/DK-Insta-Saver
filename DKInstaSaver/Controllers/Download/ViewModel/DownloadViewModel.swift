@@ -37,6 +37,7 @@ class DownloadViewModel {
             "__d" : "dis"
         ]
         
+        urlComp.queryItems = []
         newParam.forEach { (key, value) in
             urlComp.queryItems?.append(URLQueryItem(name: key, value: value))
         }

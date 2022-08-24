@@ -18,27 +18,38 @@ class ProgressHUDManager {
         case info
     }
     
-    static func showProgress(message: String?, type: MessageType = .error) {
+    static func showProgress(message: String? = nil, type: MessageType = .error) {
         DispatchQueue.main.async {
-            KRProgressHUD.set(deadline: 2.0)
-            
-            switch type {
-            case .success:
-                KRProgressHUD.showSuccess(withMessage: message)
-                break
-            case .error:
-                KRProgressHUD.showError(withMessage: message)
-                break
-            case .warning:
-                KRProgressHUD.showWarning(withMessage: message)
-                break
-            case .info:
-                KRProgressHUD.showInfo(withMessage: message)
-                break
-            default:
-                KRProgressHUD.showMessage(message ?? "Something went wrong.")
+            if let message = message {
+                
+                KRProgressHUD.set(deadline: 2.0)
+                
+                switch type {
+                case .success:
+                    KRProgressHUD.showSuccess(withMessage: message)
+                    break
+                case .error:
+                    KRProgressHUD.showError(withMessage: message)
+                    break
+                case .warning:
+                    KRProgressHUD.showWarning(withMessage: message)
+                    break
+                case .info:
+                    KRProgressHUD.showInfo(withMessage: message)
+                    break
+                default:
+                    KRProgressHUD.showMessage(message)
+                }
+                return
             }
+            
+            KRProgressHUD.show()
         }
     }
     
+    static func dismissProgress() {
+        DispatchQueue.main.async {
+            KRProgressHUD.dismiss(nil)
+        }
+    }
 }

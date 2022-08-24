@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
+  - IQKeyboardManagerSwift (6.5.10)
   - KRActivityIndicatorView (3.0.7)
   - KRProgressHUD (3.4.7):
     - KRActivityIndicatorView (= 3.0.7)
@@ -13,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 6.2)
+  - IQKeyboardManagerSwift (~> 6.5)
   - KRProgressHUD (~> 3.4)
   - SDWebImage (~> 5.13)
 
@@ -20,6 +22,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireObjectMapper
+    - IQKeyboardManagerSwift
     - KRActivityIndicatorView
     - KRProgressHUD
     - ObjectMapper
@@ -28,11 +31,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
   KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
 
-PODFILE CHECKSUM: c2f032c54ee72442cc62ffaa7462f4d956fedc7d
+PODFILE CHECKSUM: 2a154a12c6231bbb90c0a1c433f87e8fab10df34
 
 COCOAPODS: 1.11.3

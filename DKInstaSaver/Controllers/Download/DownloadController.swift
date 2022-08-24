@@ -34,10 +34,16 @@ class DownloadController: BaseViewController {
     private func configureButtons() {
         
         btnDownload.addAction(UIAction(handler: { sender in
+            DispatchQueue.main.async {
+                self.view.endEditing(true)
+            }
             self.viewModel.downloadMedia(link: self.txtLink.text)
         }), for: .touchUpInside)
         
         btnSearch.addAction(UIAction(handler: { sender in
+            DispatchQueue.main.async {
+                self.view.endEditing(true)
+            }
             Task {
                 guard let user = try? await self.viewModel.getUser(userName: self.txtUserName.text) else { return }
                 self.openUserDetailPage(user: user)

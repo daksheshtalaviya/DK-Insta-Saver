@@ -17,8 +17,10 @@ extension APIManager {
         
         return Future { promise in
             guard let url: URL = strUrl.url else { return }
+            ProgressHUDManager.showProgress()
+            
             var request: URLRequest = URLRequest(url: url)
-            request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
+//            request.addValue(AppConfig.cookies, forHTTPHeaderField: "Cookie")
 
             getMediaDetailAPIRequest(request: request, promise: promise)
         }

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import IQKeyboardManagerSwift
 
 class AppManager {
     static let shared: AppManager = AppManager()
@@ -18,10 +19,18 @@ class AppManager {
     func configure() {
         
         applyTheme()
+        configureKeyboard()
     }
     
     private func applyTheme() {
         let label = UILabel.appearance()
         label.textColor = .primary
     }
+    
+    private func configureKeyboard() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+    }
+    
+    
 }

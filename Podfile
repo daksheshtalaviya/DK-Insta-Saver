@@ -8,5 +8,6 @@ target 'DKInstaSaver' do
   pod 'AlamofireObjectMapper', '~> 6.2'
   pod 'KRProgressHUD', '~> 3.4'
   pod 'SDWebImage', '~> 5.13'
+  pod 'IQKeyboardManagerSwift', '~> 6.5'
 
 end
